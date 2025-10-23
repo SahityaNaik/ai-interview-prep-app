@@ -27,29 +27,39 @@ export default function Chat() {
     fetchQuestions();
   }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!answer.trim()) return;
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!answer.trim()) return;
 
-    const question = questions[currentQ];
-    setChatHistory((prev) => [...prev, { role: "You", content: answer }]);
-    setAnswer("");
-    setLoading(true);
+  const question = questions[currentQ];
+  setChatHistory((prev) => [...prev, { role: "You", content: answer }]);
+  setAnswer("");
+  setLoading(true);
 
-    try {
-      const { data } = await api.post("/chat/query", { question, answer });
-      setChatHistory((prev) => [
-        ...prev,
-        { role: "AI", content: data.response },
-      ]);
-      setCurrentQ((prev) => prev + 1);
-    } catch (err) {
-      console.error(err);
-      toast.error("Failed to get AI feedback");
-    } finally {
-      setLoading(false);
+  try {
+    const { data } = await api.post("/chat/query", { question, answer });
+
+    setChatHistory((prev) => [
+      ...prev,
+      { role: "AI", content: data.response },
+    ]);
+
+    // Add a short delay before moving to next question
+    if (currentQ < questions.length - 1) {
+      setTimeout(() => setCurrentQ((prev) => prev + 1), 1000);
+    } else {
+      // For the last question, delay the completion message too
+      setTimeout(() => setCurrentQ(questions.length), 1500);
     }
-  };
+
+  } catch (err) {
+    console.error(err);
+    toast.error("Failed to get AI feedback");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className="flex flex-col items-center justify-start min-h-screen bg-gray-100 p-6">
