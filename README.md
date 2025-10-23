@@ -57,5 +57,5 @@ cd ../frontend
 **Install dependencies**
 npm install
 
-**Run the frontend development server**
+**Run the frontend development server**  
 npm run dev
