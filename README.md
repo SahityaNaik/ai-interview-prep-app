@@ -37,24 +37,23 @@ cd backend
 **Install dependencies**
 npm install
 
-**Create a `.env` file in the backend folder with the following content**
-echo "PORT=5000
-MONGO_URI=your_mongodb_uri
-JWT_SECRET=your_jwt_secret
-COHERE_API_KEY=your_cohere_api_key
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_cloudinary_api_key
-CLOUDINARY_API_SECRET=your_cloudinary_secret" > .env
+**Create a `.env` file in the backend folder with the following content**  
+PORT=5000  
+MONGO_URI=your_mongodb_uri  
+JWT_SECRET=your_jwt_secret  
+COHERE_API_KEY=your_cohere_api_key  
+CLOUDINARY_CLOUD_NAME=your_cloud_name  
+CLOUDINARY_API_KEY=your_cloudinary_api_key  
+CLOUDINARY_API_SECRET=your_cloudinary_secret    
 
-**Run the backend server**
+**Run the backend server**  
 npm run dev
 
 ### Frontend Setup
 **Navigate to the frontend folder**  
-
 cd ../frontend
 
-**Install dependencies**
+**Install dependencies**  
 npm install
 
 **Run the frontend development server**  
