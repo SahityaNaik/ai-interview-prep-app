@@ -30,8 +30,7 @@ An AI-based web application to simulate job interviews. Users upload their resum
 
 ## Setup & Installation
 
-### Backend
-```bash
+### Backend Setup
 cd backend
 npm install
 
@@ -51,7 +50,7 @@ CLOUDINARY_API_SECRET=your_cloudinary_secret
 # Run the backend server
 npm run dev
 
-# Frontend setup
+### Frontend Setup
 cd ../frontend
 npm install
 npm run dev
