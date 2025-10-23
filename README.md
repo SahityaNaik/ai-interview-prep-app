@@ -3,8 +3,10 @@
 An AI-based web application to simulate job interviews. Users upload their resume and a job description, then chat with an AI interviewer that generates questions and evaluates answers.
 
 ## Demo
-- **Live Demo:** [https://ai-interview-prep-app-bay.vercel.app/]  
-- **Backend API:** [https://ai-interview-prep-app-nos1.onrender.com/]  
+- **Frontend (Live Demo):** [https://ai-interview-prep-app-bay.vercel.app/](https://ai-interview-prep-app-bay.vercel.app/)  
+- **Backend API:** [https://ai-interview-prep-app-nos1.onrender.com/](https://ai-interview-prep-app-nos1.onrender.com/)  
+- **Video Demo:** [https://www.loom.com/share/cd5c6ccfc8464185863594cbdac388f1](https://www.loom.com/share/cd5c6ccfc8464185863594cbdac388f1)
+ 
 
 ## Features
 - User signup/login with JWT authentication
