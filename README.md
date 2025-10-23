@@ -37,20 +37,14 @@ cd backend
 # Install dependencies
 npm install
 
-# Create a .env file in the backend folder with the following keys
-cat > .env <<EOL
-PORT=5000
+# Create a `.env` file in the backend folder with the following content
+echo "PORT=5000
 MONGO_URI=your_mongodb_uri
 JWT_SECRET=your_jwt_secret
-
-# Cohere API Key
 COHERE_API_KEY=your_cohere_api_key
-
-# Cloudinary
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_cloudinary_api_key
-CLOUDINARY_API_SECRET=your_cloudinary_secret
-EOL
+CLOUDINARY_API_SECRET=your_cloudinary_secret" > .env
 
 # Run the backend server
 npm run dev
