@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000/api", // change to Render URL after deployment
+  baseURL: "https://ai-interview-prep-app-nos1.onrender.com", 
 });
 
 api.interceptors.request.use((config) => {
