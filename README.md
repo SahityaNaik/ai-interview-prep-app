@@ -31,13 +31,13 @@ An AI-based web application to simulate job interviews. Users upload their resum
 ## Setup & Installation
 
 ### Backend Setup
-# Navigate to the backend folder
+**Navigate to the backend folder**
 cd backend
 
-# Install dependencies
+**Install dependencies**
 npm install
 
-# Create a `.env` file in the backend folder with the following content
+**Create a `.env` file in the backend folder with the following content**
 echo "PORT=5000
 MONGO_URI=your_mongodb_uri
 JWT_SECRET=your_jwt_secret
@@ -46,15 +46,15 @@ CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_cloudinary_api_key
 CLOUDINARY_API_SECRET=your_cloudinary_secret" > .env
 
-# Run the backend server
+**Run the backend server**
 npm run dev
 
 ### Frontend Setup
-# Navigate to the frontend folder
+**Navigate to the frontend folder**
 cd ../frontend
 
-# Install dependencies
+**Install dependencies**
 npm install
 
-# Run the frontend development server
+**Run the frontend development server**
 npm run dev
