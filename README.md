@@ -50,7 +50,8 @@ CLOUDINARY_API_SECRET=your_cloudinary_secret" > .env
 npm run dev
 
 ### Frontend Setup
-**Navigate to the frontend folder**
+**Navigate to the frontend folder**  
+
 cd ../frontend
 
 **Install dependencies**
