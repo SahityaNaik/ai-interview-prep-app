@@ -23,49 +23,79 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-indigo-100 to-white">
-      <div className="bg-white p-8 rounded-2xl shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-semibold text-center mb-6">
-          {isLogin ? "Login" : "Signup"}
+    <div className="flex flex-col items-center justify-center min-h-screen bg-[#0F172A] p-6 antialiased">
+      {/* Hero Branding Section */}
+      <div className="text-center mb-10 max-w-4xl space-y-4 animate-in fade-in slide-in-from-top-4 duration-1000">
+        <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
+          Master Your Next Career Move
+        </h1>
+        <p className="text-slate-400 text-lg">
+          Simulate real-world job interviews and get personalized AI feedback based on your resume.
+        </p>
+      </div>
+
+      <div className="midnight-card w-full max-w-md p-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+        <h2 className="text-2xl font-semibold text-white mb-8 text-center">
+          {isLogin ? "Welcome Back" : "Create Your Account"}
         </h2>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="email"
-            placeholder="Email"
-            className="w-full border rounded-lg p-3"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            className="w-full border rounded-lg p-3"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-slate-300 ml-1">Email Address</label>
+            <input
+              type="email"
+              placeholder="name@example.com"
+              className="w-full midnight-input"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-slate-300 ml-1">Password</label>
+            <input
+              type="password"
+              placeholder="••••••••"
+              className="w-full midnight-input"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
 
           <button
             type="submit"
-            className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition"
+            className="w-full midnight-button-primary mt-4"
           >
-            {isLogin ? "Login" : "Signup"}
+            {isLogin ? "Sign In" : "Sign Up"}
           </button>
         </form>
 
-        <p className="text-center text-sm mt-4">
+        <div className="relative mt-8">
+          <div className="absolute inset-0 flex items-center">
+            <span className="w-full border-t border-slate-800"></span>
+          </div>
+          <div className="relative flex justify-center text-xs uppercase">
+            <span className="bg-[#1E293B] px-2 text-slate-500">OR</span>
+          </div>
+        </div>
+
+        <p className="text-center text-slate-400 text-sm mt-8">
           {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
           <button
             type="button"
-            className="text-indigo-600 font-medium"
+            className="text-indigo-400 font-semibold hover:text-indigo-300 transition-colors"
             onClick={() => setIsLogin(!isLogin)}
           >
-            {isLogin ? "Signup" : "Login"}
+            {isLogin ? "Create an account" : "Sign in here"}
           </button>
         </p>
       </div>
+      
+      <p className="mt-8 text-slate-500 text-xs">
+        &copy; 2026 AI-Powered Interview Prep
+      </p>
     </div>
   );
 };
