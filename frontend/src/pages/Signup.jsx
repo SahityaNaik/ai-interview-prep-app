@@ -7,11 +7,13 @@ const Signup = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const endpoint = isLogin ? "/auth/login" : "/auth/signup";
       const { data } = await api.post(endpoint, { email, password });
       localStorage.setItem("token", data.token);
@@ -19,6 +21,8 @@ const Signup = () => {
       navigate("/upload");
     } catch (err) {
       toast.error(err.response?.data?.message || "Something went wrong");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -30,7 +34,8 @@ const Signup = () => {
           Master Your Next Career Move
         </h1>
         <p className="text-slate-400 text-lg">
-          Simulate real-world job interviews and get personalized AI feedback based on your resume.
+          Simulate real-world job interviews and get personalized AI feedback
+          based on your resume.
         </p>
       </div>
 
@@ -41,7 +46,9 @@ const Signup = () => {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-300 ml-1">Email Address</label>
+            <label className="text-sm font-medium text-slate-300 ml-1">
+              Email Address
+            </label>
             <input
               type="email"
               placeholder="name@example.com"
@@ -53,7 +60,9 @@ const Signup = () => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-300 ml-1">Password</label>
+            <label className="text-sm font-medium text-slate-300 ml-1">
+              Password
+            </label>
             <input
               type="password"
               placeholder="••••••••"
@@ -66,9 +75,36 @@ const Signup = () => {
 
           <button
             type="submit"
-            className="w-full midnight-button-primary mt-4"
+            disabled={loading}
+            className={`w-full midnight-button-primary mt-4 flex items-center justify-center space-x-2 ${loading ? "opacity-70 cursor-not-allowed" : ""}`}
           >
-            {isLogin ? "Sign In" : "Sign Up"}
+            {loading ? (
+              <>
+                <svg
+                  className="animate-spin h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+                <span>{isLogin ? "Signing in..." : "Creating account..."}</span>
+              </>
+            ) : (
+              <span>{isLogin ? "Sign In" : "Sign Up"}</span>
+            )}
           </button>
         </form>
 
@@ -92,7 +128,7 @@ const Signup = () => {
           </button>
         </p>
       </div>
-      
+
       <p className="mt-8 text-slate-500 text-xs">
         &copy; 2026 AI-Powered Interview Prep
       </p>

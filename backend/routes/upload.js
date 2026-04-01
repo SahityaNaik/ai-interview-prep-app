@@ -22,16 +22,28 @@ router.post("/", authMiddleware, upload.single("file"), async (req, res) => {
     const pdfData = await pdfParse(dataBuffer);
     const extractedText = pdfData.text.substring(0, 10000);
 
+    // --- PHYSICAL CLEANUP: Delete old files from Cloudinary ---
+    const existingDocs = await Document.find({ userId: req.user, type });
+    for (const oldDoc of existingDocs) {
+      if (oldDoc.publicId) {
+        await cloudinary.uploader.destroy(oldDoc.publicId);
+      }
+    }
+
+    // Delete old document record from MongoDB
+    await Document.deleteMany({ userId: req.user, type });
+
     // Upload file in cloudinary
     const uploadResult = await cloudinary.uploader.upload(req.file.path, {
       resource_type: "auto",
-      folder: "upivot_assignment",
+      folder: "ai_interview_prep",
     });
 
     const doc = await Document.create({
       userId: req.user,
       type,
       fileUrl: uploadResult.secure_url,
+      publicId: uploadResult.public_id,
       text: extractedText,
     });
 
